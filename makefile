@@ -1,4 +1,4 @@
-COMPILEFLAGS = -std=c++11 -I"./include" -O3
+COMPILEFLAGS = -std=c++11 -I"./include" -O3 -Wall
 COMPILECMD = g++ -c $(COMPILEFLAGS)
 LINKFLAGS =   
 LINKCMD = g++ $(LINKFLAGS) $(OBJS)  $(LIBRARIES) -o $(TARGET)

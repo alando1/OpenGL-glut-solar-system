@@ -20,7 +20,7 @@ int currentPlanet;
 
 void handleFunc()
 {
-	float vecx =0.0f, vecy=0.0f, vecz=0.0f;
+	float vecx =0.0f, vecz=0.0f;
 
 	speed = 3.0f;
 	if(EarthBool)
@@ -61,7 +61,6 @@ void handleFunc()
 	if(keyStates['a'] || keyStates['A'])
 	{
 		vecx = camlook.z;
-		vecy = camlook.y;
 		vecz = -camlook.x;
 		campos.x+= vecx*speed;
 		campos.z+= vecz*speed;
@@ -71,7 +70,6 @@ void handleFunc()
 	{
 
 		vecx = camlook.z;
-		vecy = camlook.y;
 		vecz = -camlook.x;
 		campos.x-= vecx*speed;
 		campos.z-= vecz*speed;		

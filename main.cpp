@@ -87,7 +87,6 @@ void createPlanets()
 int main(int argc, char **argv)
 {
 	time_t start, finish;
-	char input;
 
 	if(argc == 1)
 	{
