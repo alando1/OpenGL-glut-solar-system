@@ -3,7 +3,7 @@
 #include <cmath>
 #pragma once
 #include "vector.h"
-#include "renderUpdates.h"
+#include "RenderUpdates.h"
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #else

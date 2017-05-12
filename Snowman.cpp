@@ -9,7 +9,7 @@ SnowMan::SnowMan(Vec3 p, Vec3 d, Vec3 v, Vec3 c, float m, float s) :
 
 	}
 
-SnowMan::drawSnowMan()
+void SnowMan::drawSnowMan()
 {
 
 

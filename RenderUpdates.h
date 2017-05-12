@@ -7,9 +7,9 @@
 #include <list>
 #include "vector.h"
 #include "Portal.h"
-#include "planet.h"
+#include "Planet.h"
 #include "DrawFunc.h"
-#include "suppliedGlutFuncs.h"
+#include "SuppliedGlutFuncs.h"
 
 #ifdef __APPLE__
 #include <GLUT/glut.h>

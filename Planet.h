@@ -10,7 +10,7 @@
 #else
 #include <GL/glut.h>
 #endif
-#include <SOIL.h>
+#include "SOIL.h"
 
 #define SUN		0
 #define MERCURY 1

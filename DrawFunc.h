@@ -3,15 +3,13 @@
 #include <string>
 #include <iostream>
 #include <cmath>
-//#include <queue>
-//#include "vector.h"
+#include "SOIL.h"
 
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #else
 #include <GL/glut.h>
 #endif
-#include <SOIL.h>
 
 void orbitSnowmen();
 void drawSnowstorm();

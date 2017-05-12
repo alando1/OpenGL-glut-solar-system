@@ -1,5 +1,5 @@
-#include "suppliedGlutFuncs.h"
-#include "renderUpdates.h"
+#include "SuppliedGlutFuncs.h"
+#include "RenderUpdates.h"
 extern float pitch, heading, boost, aspectratio, perspective;
 extern int centerX, centerY;
 extern bool keyStates[256], keyTaps[256], shiftKeyState;
@@ -140,23 +140,20 @@ void renderText2D(float a, float b, void* font, char* string)
 
 void printScreenText()
 {
-	char msg[80];
-	char msg2[80];
-	char msg3[80];
-	char msg4[80];
-    glColor3f(0, 0.6f, 0);
+	char msg[80];			//message length
+    glColor3f(0, 0.6f, 0);	//text color
  
-    sprintf_s(msg, 79, "cam pos: %.3f, %.3f, %.3f", campos.x, campos.y, campos.z);
+    sprintf(msg, "cam pos: %.3f, %.3f, %.3f", campos.x, campos.y, campos.z);
     renderText2D(5.0f, 20.0f, font, msg);
 
-    sprintf_s(msg2, 79, "FOV: %.1f", perspective);
-    renderText2D(5.0f, 40.0f, font, msg2);
+    sprintf(msg, "FOV: %.1f", perspective);
+    renderText2D(5.0f, 40.0f, font, msg);
 
-    sprintf_s(msg3, 79, "look vector: %.3f, %.3f, %.3f", camlook.x, camlook.y, camlook.z);
-    renderText2D(5.0f, 60.0f, font, msg3);
+    sprintf(msg, "look vector: %.3f, %.3f, %.3f", camlook.x, camlook.y, camlook.z);
+    renderText2D(5.0f, 60.0f, font, msg);
 
-    sprintf_s(msg4, 79, "FPS: %.3f", FPS);
-    renderText2D(5.0f, 80.0f, font, msg4);
+    sprintf(msg, "FPS: %.3f", FPS);
+    renderText2D(5.0f, 80.0f, font, msg);
 }
 
 void changeSize(int w, int h) 

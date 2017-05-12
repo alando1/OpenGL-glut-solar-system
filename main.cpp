@@ -6,17 +6,17 @@
 #include "vector.h"
 #include "Snowman.h"
 #include "Portal.h"
-#include "planet.h"
+#include "Planet.h"
 #include "DrawFunc.h"
-#include "suppliedGlutFuncs.h"
-#include "renderUpdates.h"
+#include "SuppliedGlutFuncs.h"
+#include "RenderUpdates.h"
 
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #else
 #include <GL/glut.h>
 #endif
-#include <SOIL.h>
+#include "SOIL.h"
 
 using namespace std;
 #define MAX_SNOWMEN	100
@@ -40,10 +40,10 @@ float earthRadius = 63.71f;
 bool keyStates[256], keyTaps[256], planetBools[3];
 bool shiftKeyState;
 bool loadHiRes;
-bool pause=FALSE;
-bool EarthBool=FALSE;
-bool MarsBool=FALSE;
-bool orbitLock=FALSE;
+bool pause=false;
+bool EarthBool=false;
+bool MarsBool=false;
+bool orbitLock=false;
 
 
 
@@ -91,7 +91,7 @@ int main(int argc, char **argv)
 
 	if(argc == 1)
 	{
-		loadHiRes = FALSE;
+		loadHiRes = false;
 		cout <<"> Loading Lo-Res textures ..." << endl;
 	}
 	else
@@ -99,17 +99,17 @@ int main(int argc, char **argv)
 		if(argv[1][0] == '0')
 		{
 			cout <<"> Loading Lo-Res textures ..." << endl;
-			loadHiRes = FALSE;
+			loadHiRes = false;
 		}
 		else if(argv[1][0] == '1')
 		{
 			cout <<"> Loading Hi-Res textures ..." << endl;
-			loadHiRes = TRUE;
+			loadHiRes = true;
 		}
 		else 
 		{
 			cout <<"> Invalid arguements, loading Lo-Res textures ..." << endl;
-			loadHiRes = FALSE;
+			loadHiRes = false;
 		}
 
 	}

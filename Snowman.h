@@ -13,6 +13,6 @@ class SnowMan
 		float speed;
 
 		SnowMan(Vec3 pos, Vec3 dir, Vec3 vel, Vec3 color, float mass, float speed);
-		drawSnowMan();
+		void drawSnowMan();
 		
 };

@@ -1,4 +1,4 @@
-#include "renderUpdates.h"
+#include "RenderUpdates.h"
 
 extern void printScreenText();
 extern Planet planets[10];
@@ -170,45 +170,45 @@ void handleFunc()
 	if(keyStates['/'])
 		relative-=0.0001f;
 
-	if((keyTaps['p'] || keyTaps['P']) && (pause == FALSE))
+	if((keyTaps['p'] || keyTaps['P']) && (pause == false))
 	{
-		pause = TRUE;
-		cout << "> Pause:\tTRUE"<< endl;
+		pause = true;
+		cout << "> Pause:\ttrue"<< endl;
 	}
-	else if((keyTaps['p'] || keyTaps['P']) && (pause == TRUE))		
+	else if((keyTaps['p'] || keyTaps['P']) && (pause == false))		
 	{
-			pause = FALSE;
-		cout << "> Pause:\tFALSE" << endl;
+			pause = false;
+		cout << "> Pause:\tfalse" << endl;
 	}
 
-	if((keyTaps['o'] || keyTaps['O']) && (orbitLock == FALSE))
+	if((keyTaps['o'] || keyTaps['O']) && (orbitLock == false))
 	{
-		orbitLock = TRUE;
+		orbitLock = true;
 		cout << "> Orbital Lock:\tEngaged" << endl;
 	}
-	else if((keyTaps['o'] || keyTaps['O']) && (orbitLock == TRUE))
+	else if((keyTaps['o'] || keyTaps['O']) && (orbitLock == true))
 	{
-		orbitLock = FALSE;
+		orbitLock = false;
 		cout << "> Orbital Lock:\tDisengaged" << endl;
 	}
-	if((keyTaps['e'] || keyTaps['E']) && (EarthBool == FALSE))
+	if((keyTaps['e'] || keyTaps['E']) && (EarthBool == false))
 	{
-		EarthBool = TRUE;
+		EarthBool = true;
 		cout << "> Load:\t\tEarth" << endl;
 	}
-	else if((keyTaps['e'] || keyTaps['E']) && (EarthBool == TRUE))
+	else if((keyTaps['e'] || keyTaps['E']) && (EarthBool == true))
 	{
-		EarthBool = FALSE;
+		EarthBool = false;
 		cout << "> Load:\t\tSolar Sytem" << endl;
 	}
-	if((keyTaps['m'] || keyTaps['M']) && (MarsBool == FALSE))
+	if((keyTaps['m'] || keyTaps['M']) && (MarsBool == false))
 	{
-		MarsBool = TRUE;
+		MarsBool = true;
 		cout << "> Load:\t\tMars" << endl;
 	}
-	else if((keyTaps['m'] || keyTaps['M']) && (MarsBool == TRUE))
+	else if((keyTaps['m'] || keyTaps['M']) && (MarsBool == true))
 	{
-		MarsBool = FALSE;
+		MarsBool = false;
 		cout << "> Load:\t\tSolar Sytem" << endl;
 	}
 	if(keyTaps['t'] || keyTaps['T'])
@@ -255,8 +255,8 @@ void updatePortals()
 					{
 						memset(planetBools,0,3*sizeof(bool));
 						followthru = chrono::steady_clock::now();
-						MarsBool=FALSE;
-						EarthBool=TRUE;
+						MarsBool=false;
+						EarthBool=true;
 						return;
 					}
 				}
@@ -266,8 +266,8 @@ void updatePortals()
 					{
 						//memset(planetBools,0,3*sizeof(bool));
 						followthru = chrono::steady_clock::now();
-						MarsBool=TRUE;
-						EarthBool=FALSE;
+						MarsBool=true;
+						EarthBool=false;
 						return;
 					}
 				}
