@@ -44,6 +44,7 @@ bool pause=false;
 bool EarthBool=false;
 bool MarsBool=false;
 bool orbitLock=false;
+bool hud=true;
 
 
 

@@ -5,7 +5,7 @@ extern Planet planets[10];
 extern list<Portal*> portalList;
 extern Planet Mercury, Venus, Earth, Moon, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto;
 extern bool keyStates[256], keyTaps[256], planetBools[3], shiftKeyState, pause,
-			EarthBool, MarsBool, orbitLock;
+			EarthBool, MarsBool, orbitLock, hud;
 extern GLUquadricObj* quadric;
 extern float earthRadius, boost, aspectratio, perspective,
 			 heading, pitch, rot, rot2, relative, speed;
@@ -127,7 +127,7 @@ void handleFunc()
 		camlook = newl;
 	}	
 	/*--------change perspective---------*/
-	if(keyStates['`'])
+	if(keyStates['1'])
 	{
 		perspective -= 1.0f;
 		if(perspective <= 1.0f)
@@ -137,7 +137,7 @@ void handleFunc()
 		gluPerspective(perspective, aspectratio, 0.1f, 40000.0f);
 		glMatrixMode(GL_MODELVIEW);
 	}
-	if(keyStates['1'])
+	if(keyStates['`'])
 	{
 		perspective= 45.0f;
 		glMatrixMode(GL_PROJECTION);
@@ -173,11 +173,14 @@ void handleFunc()
 		pause = true;
 		cout << "> Pause:\ttrue"<< endl;
 	}
-	else if((keyTaps['p'] || keyTaps['P']) && (pause == false))		
+	else if((keyTaps['p'] || keyTaps['P']) && (pause == true))		
 	{
 			pause = false;
 		cout << "> Pause:\tfalse" << endl;
 	}
+
+	if(keyTaps['h'] || keyTaps['H'])
+		hud = !hud;
 
 	if((keyTaps['o'] || keyTaps['O']) && (orbitLock == false))
 	{
@@ -199,6 +202,7 @@ void handleFunc()
 		EarthBool = false;
 		cout << "> Load:\t\tSolar Sytem" << endl;
 	}
+
 	if((keyTaps['m'] || keyTaps['M']) && (MarsBool == false))
 	{
 		MarsBool = true;
@@ -457,11 +461,12 @@ void renderScene(void)
 				glBindTexture(GL_TEXTURE_2D, SaturnTexture);
 				Saturn.drawPlanet();
 				//rotate for shadow angle
-				glRotatef(20,0,0,1);
+				glRotatef(-20,0,0,1);
 				glBindTexture(GL_TEXTURE_2D, SaturnRingTexture);
 				glEnable(GL_BLEND);
 				glColor4f(1,1,1,.7f);
-				glRotatef(5,1,0,0);
+				//wobble rotate
+				//glRotatef(5,1,0,0);
 				gluDisk(quadric, 600, 1100, 360, 40);
 				glDisable(GL_BLEND);
 			glPopMatrix();

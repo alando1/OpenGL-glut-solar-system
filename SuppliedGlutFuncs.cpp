@@ -2,7 +2,7 @@
 #include "RenderUpdates.h"
 extern float pitch, heading, boost, aspectratio, perspective;
 extern int centerX, centerY;
-extern bool keyStates[256], keyTaps[256], shiftKeyState;
+extern bool keyStates[256], keyTaps[256], shiftKeyState, hud;
 extern void* font;
 extern float FPS;
 extern Vec3 campos, camlook;
@@ -57,6 +57,14 @@ void mouseMove(int x, int y)
 	
 		heading -= static_cast<float>(dx)*0.2f;
 		pitch -= static_cast<float>(dy)*0.5f;
+
+		if(pitch>85)
+			pitch=85;
+		else
+		{
+			if(pitch<-85)
+				pitch = -85;
+		}
 
 		Vec3 newlook(0,0,-1);
 		Vec3 newpos;
@@ -143,17 +151,75 @@ void printScreenText()
 	char msg[80];			//message length
     glColor3f(0, 0.6f, 0);	//text color
  
-    sprintf(msg, "cam pos: %.3f, %.3f, %.3f", campos.x, campos.y, campos.z);
-    renderText2D(5.0f, 20.0f, font, msg);
+ 	if(hud == true)
+ 	{
+	    sprintf(msg, "cam pos: %.3f, %.3f, %.3f", campos.x, campos.y, campos.z);
+	    renderText2D(5.0f, 20.0f, font, msg);
 
-    sprintf(msg, "FOV: %.1f", perspective);
-    renderText2D(5.0f, 40.0f, font, msg);
+	    sprintf(msg, "FOV: %.1f", perspective);
+	    renderText2D(5.0f, 40.0f, font, msg);
 
-    sprintf(msg, "look vector: %.3f, %.3f, %.3f", camlook.x, camlook.y, camlook.z);
-    renderText2D(5.0f, 60.0f, font, msg);
+	    sprintf(msg, "look vector: %.3f, %.3f, %.3f", camlook.x, camlook.y, camlook.z);
+	    renderText2D(5.0f, 60.0f, font, msg);
 
-    sprintf(msg, "FPS: %.3f", FPS);
-    renderText2D(5.0f, 80.0f, font, msg);
+	    sprintf(msg, "FPS: %.3f", FPS);
+	    renderText2D(5.0f, 80.0f, font, msg);
+
+	    sprintf(msg, "Movement:");
+	    renderText2D(5.0f, glutGet(GLUT_WINDOW_HEIGHT) - 100.0f, font, msg);
+
+	    sprintf(msg, "spacebar - UP");
+	    renderText2D(5.0f, glutGet(GLUT_WINDOW_HEIGHT) - 80.0f, font, msg);
+
+	    sprintf(msg, "C - DOWN");
+	    renderText2D(5.0f, glutGet(GLUT_WINDOW_HEIGHT) - 60.0f, font, msg); 
+
+	    sprintf(msg, "FORWARD: W");
+	    renderText2D(145.0f, glutGet(GLUT_WINDOW_HEIGHT) - 80.0f, font, msg);      
+
+	    sprintf(msg, "BACKWARD: S");
+	    renderText2D(145.0f, glutGet(GLUT_WINDOW_HEIGHT) - 60.0f, font, msg);  
+
+	    sprintf(msg, "LEFT: A");
+	    renderText2D(145.0f, glutGet(GLUT_WINDOW_HEIGHT) - 40.0f, font, msg);  
+
+	    sprintf(msg, "RIGHT: D");
+	    renderText2D(145.0f, glutGet(GLUT_WINDOW_HEIGHT) - 20.0f, font, msg);  
+
+	    sprintf(msg, "FLY: R or Q");
+	    renderText2D(145.0f, glutGet(GLUT_WINDOW_HEIGHT) - 100.0f, font, msg); 
+
+	    sprintf(msg, "mars, earth: M, E");
+	    renderText2D( glutGet(GLUT_WINDOW_WIDTH) - 240.0f, glutGet(GLUT_WINDOW_HEIGHT) - 180.0f,font, msg);
+
+	    sprintf(msg, "change perspective: 1,2,`");
+	    renderText2D( glutGet(GLUT_WINDOW_WIDTH) - 240.0f, glutGet(GLUT_WINDOW_HEIGHT) - 160.0f,font, msg);
+
+	    sprintf(msg, "display HUD: H");
+	    renderText2D( glutGet(GLUT_WINDOW_WIDTH) - 240.0f,glutGet(GLUT_WINDOW_HEIGHT) - 140.0f,font, msg); 
+
+	    sprintf(msg, "pause:  P");
+	    renderText2D( glutGet(GLUT_WINDOW_WIDTH) - 240.0f,glutGet(GLUT_WINDOW_HEIGHT) - 120.0f,font, msg);
+
+	    sprintf(msg, "portal: T");
+	    renderText2D( glutGet(GLUT_WINDOW_WIDTH) - 240.0f,glutGet(GLUT_WINDOW_HEIGHT) - 100.0f,font, msg);
+
+	    sprintf(msg, "align planets: \\");
+	    renderText2D( glutGet(GLUT_WINDOW_WIDTH) - 240.0f, glutGet(GLUT_WINDOW_HEIGHT) - 80.0f,font, msg);
+
+	    sprintf(msg, "delta t-0.01: ; or .");
+	    renderText2D( glutGet(GLUT_WINDOW_WIDTH) - 240.0f, glutGet(GLUT_WINDOW_HEIGHT) - 60.0f,font, msg);
+
+	    sprintf(msg, "delta t-0.0001: \"'\" or \"/\"");
+	    renderText2D( glutGet(GLUT_WINDOW_WIDTH) - 240.0f, glutGet(GLUT_WINDOW_HEIGHT) - 40.0f,font, msg);
+
+	    sprintf(msg, "reset delta t: \"]\"");
+	    renderText2D( glutGet(GLUT_WINDOW_WIDTH) - 240.0f, glutGet(GLUT_WINDOW_HEIGHT) - 20.0f,font, msg);
+
+	    sprintf(msg, "camera angles: TAB, =, -, 0");
+	    renderText2D( glutGet(GLUT_WINDOW_WIDTH) - 240.0f, glutGet(GLUT_WINDOW_HEIGHT) - 2.0f,font, msg);
+
+	}
 }
 
 void changeSize(int w, int h) 
