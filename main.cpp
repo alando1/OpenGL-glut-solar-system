@@ -62,7 +62,8 @@ void* font = GLUT_BITMAP_HELVETICA_18;
 // actual vector representing the camera's look direction
 // initial XYZ position of the camera
 Vec3 camlook(0,0,-1);
-Vec3 campos(0,1,5);
+Vec3 campos(0.0f, 3000.0f, -2009.0f);
+//Vec3 campos(0,1,5);
 
 void Clear_Keyboard_Input_Buffer()
 {
